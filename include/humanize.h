@@ -10,6 +10,11 @@
 
 namespace humanize {
   template <class _Rep, class _Period>
+  std::string duration(const std::chrono::duration<_Rep, _Period>& d) {
+    std::chrono::duration<_Rep, _Period> d2(d);
+    return duration(std::move(d2));
+  }
+  template <class _Rep, class _Period>
   std::string duration(std::chrono::duration<_Rep, _Period>&& d) {
     using namespace std::literals;
     std::ostringstream oss;
